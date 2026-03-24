@@ -1,4 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.xavierdan.fr/api'
+
+  api: {
+    baseUrl: 'https://api.xavierdan.fr',
+    contact: '/api/contact'
+  }
 };

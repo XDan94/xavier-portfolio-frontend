@@ -4,7 +4,10 @@
     <div class="left-panel">
       <div>
         <h1 class="left-title">Contactez moi !</h1>
-        <p class="left-subtitle">Je suis disponible pour tout projet, collaboration ou simple question. Réponse garantie sous 24h.</p>
+        <p class="left-subtitle">
+          Je suis disponible pour tout projet, collaboration ou simple question.
+          Réponse garantie sous 24h.
+        </p>
       </div>
       <div class="author">
         <div class="avatar">👨‍💻</div>
@@ -20,48 +23,76 @@
 
         <div class="field">
           <label>Nom <span>*</span></label>
-          <input type="text" formControlName="name" placeholder="Votre nom complet" />
-          <span class="error" [class.visible]="submitted && f['name'].errors?.['required']">Le nom est requis.</span>
+          <input type="text" formControlName="name" placeholder="Votre nom complet"/>
+          <span class="error" [class.visible]="submitted && f['name'].errors?.['required']">
+            Le nom est requis.
+          </span>
         </div>
 
         <div class="field">
           <label>Email <span>*</span></label>
-          <input type="email" formControlName="email" placeholder="votre@email.com" />
-          <span class="error" [class.visible]="submitted && f['email'].errors?.['email']">Format invalide.</span>
+          <input type="email" formControlName="email" placeholder="votre@email.com"/>
+          <span class="error" [class.visible]="submitted && f['email'].errors?.['required']">
+            L'email est requis.
+          </span>
+          <span class="error" [class.visible]="submitted && f['email'].errors?.['email']">
+            Format invalide.
+          </span>
         </div>
 
         <div class="field">
           <label>Sujet <span>*</span></label>
-          <input type="text" formControlName="subject" placeholder="Objet de votre message" />
-          <span class="error" [class.visible]="submitted && f['subject'].errors?.['required']">Le sujet est requis.</span>
+          <input type="text" formControlName="subject" placeholder="Objet de votre message"/>
+          <span class="error" [class.visible]="submitted && f['subject'].errors?.['required']">
+            Le sujet est requis.
+          </span>
         </div>
 
         <div class="field">
           <label>Message <span>*</span></label>
           <textarea rows="4" formControlName="message" placeholder="Décrivez votre projet..."></textarea>
-          <span class="error" [class.visible]="submitted && f['message'].errors?.['minlength']">Minimum 10 caractères.</span>
+          <span class="error" [class.visible]="submitted && f['message'].errors?.['required']">
+            Le message est requis.
+          </span>
+          <span class="error" [class.visible]="submitted && f['message'].errors?.['minlength']">
+            Minimum 10 caractères.
+          </span>
         </div>
 
         <div class="bottom-row">
-          <label class="checkbox-label">
-            <span class="custom-check"></span>
-            J'accepte que mes données soient utilisées pour traiter ma demande.
-          </label>
+          @if (!success) {
+            <label class="checkbox-label" (click)="toggleConsent()">
+              <span class="custom-check" [class.checked]="contactForm.get('consent')?.value"></span>
+              <span class="consent-text">J'accepte le traitement de mes données.</span>
+            </label>
+          }
 
           <div class="submit-area">
-            @if (!success && !error) {
-              <button type="submit" class="submit-btn" [disabled]="loading">
-                {{ loading ? 'Envoi en cours ...' : 'Envoyer' }}
-              </button>
-            }
-            @if (success) {
-              <p class="success-msg">✓ Message envoyé avec succès !</p>
-            }
-            @if (error) {
-              <p class="error-msg">✗ Une erreur est survenue, réessayez.</p>
-            }
+            <button type="submit" class="submit-btn" [disabled]="loading || success"
+                    [class.success]="success"
+                    [class.error-state]="error">
+              @if (loading) {
+                <span class="btn-content">
+          <span class="spinner"></span>
+          Envoi en cours...
+        </span>
+              }
+              @if (!loading && !success && !error) {
+                <span class="btn-content">Envoyer</span>
+              }
+              @if (success) {
+                <span class="btn-content">✓ Message envoyé !</span>
+              }
+              @if (error) {
+                <span class="btn-content">✗ Réessayez</span>
+              }
+            </button>
           </div>
         </div>
+
+        <span class="error consent-error" [class.visible]="submitted && !contactForm.get('consent')?.value">
+          Vous devez accepter le traitement des données.
+        </span>
 
       </form>
     </div>

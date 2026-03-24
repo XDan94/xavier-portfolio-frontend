@@ -34,16 +34,21 @@ export class ContactComponent implements OnInit {
     return this.contactForm.controls;
   }
 
+  toggleConsent(): void {
+    const current = this.contactForm.get('consent')?.value;
+    this.contactForm.get('consent')?.setValue(!current);
+  }
+
   onSubmit(): void {
     this.submitted = true;
 
-    if (this.contactForm.invalid) return;
+    if (this.contactForm.invalid || !this.contactForm.get('consent')?.value) return;
 
     this.loading = true;
     this.success = false;
     this.error = false;
 
-    this.http.post(`${environment.apiUrl}/contact`, {
+    this.http.post(`${environment.api.baseUrl}${environment.api.contact}`, {
       name:    this.f['name'].value,
       email:   this.f['email'].value,
       subject: this.f['subject'].value,

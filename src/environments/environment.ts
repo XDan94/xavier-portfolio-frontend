@@ -1,4 +1,8 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api'
+
+  api: {
+    baseUrl: 'http://localhost:8080',
+    contact: '/api/contact'
+  }
 };

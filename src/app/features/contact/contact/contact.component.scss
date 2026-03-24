@@ -4,7 +4,6 @@
   justify-content: center;
   padding: 0 2rem;
   min-height: calc(100vh - 70px);
-  /*font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;*/
 }
 
 .contact-card {
@@ -92,54 +91,65 @@
 .field {
   margin-bottom: 1.1rem;
   min-width: 0;
+
+  label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+
+    span {
+      color: rgba(180, 120, 255, 0.9);
+      margin-left: 3px;
+    }
+  }
+
+  input, textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    font-size: 0.88rem;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s;
+    font-family: inherit;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    &:focus {
+      border-color: rgba(160, 100, 255, 0.55);
+      background: rgba(160, 100, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(160, 100, 255, 0.1);
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
 }
 
-.field label {
+.error {
+  font-size: 0.73rem;
+  color: rgba(255, 130, 130, 0.9);
+  margin-top: 5px;
   display: block;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 8px;
-}
+  min-height: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
 
-.field label span {
-  color: rgba(180, 120, 255, 0.9);
-  margin-left: 3px;
-}
-
-.field input,
-.field textarea {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  box-sizing: border-box;
-  padding: 13px 16px;
-  font-size: 0.88rem;
-  color: #ffffff;
-  outline: none;
-  transition: border-color 0.25s, background 0.25s;
-  font-family: inherit;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.field input:focus,
-.field textarea:focus {
-  border-color: rgba(160, 100, 255, 0.55);
-  background: rgba(160, 100, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(160, 100, 255, 0.1);
-}
-
-.field textarea {
-  resize: none;
+  &.visible {
+    opacity: 1;
+  }
 }
 
 .bottom-row {
@@ -154,10 +164,8 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
   cursor: pointer;
+  user-select: none;
   flex: 1;
 }
 
@@ -165,24 +173,52 @@
   width: 18px;
   height: 18px;
   border-radius: 6px;
-  background: rgba(160, 100, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.25);
   flex-shrink: 0;
   margin-top: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+
+  &::after {
+    content: '';
+    width: 5px;
+    height: 9px;
+    border: 1.5px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+    display: none;
+  }
+
+  &.checked {
+    background: rgba(160, 100, 255, 0.7);
+    border-color: rgba(160, 100, 255, 0.9);
+
+    &::after {
+      display: block;
+    }
+  }
 }
 
-.custom-check::after {
-  content: '';
-  width: 5px;
-  height: 9px;
-  border: 1.5px solid #fff;
-  border-top: none;
-  border-left: none;
-  transform: rotate(45deg) translateY(-1px);
+.consent-text {
+  font-size: 0.73rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.consent-error {
   display: block;
+  margin-top: 6px;
+}
+
+.submit-area {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .submit-btn {
@@ -197,39 +233,69 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  transition: background 0.3s, border-color 0.3s, transform 0.1s;
   font-family: inherit;
   letter-spacing: 0.01em;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled:not(.success):not(.error-state) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.success {
+    background: rgba(74, 222, 128, 0.2);
+    border-color: rgba(74, 222, 128, 0.5);
+    cursor: default;
+    animation: fadeIn 0.4s ease;
+  }
+
+  &.error-state {
+    background: rgba(248, 113, 113, 0.2);
+    border-color: rgba(248, 113, 113, 0.5);
+    cursor: pointer;
+    animation: shake 0.4s ease;
+  }
 }
 
-.submit-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.3s ease;
 }
 
-.submit-btn:active {
-  transform: scale(0.97);
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
 }
 
-.error {
-  font-size: 0.73rem;
-  color: rgba(255, 130, 130, 0.9);
-  margin-top: 5px;
-  display: block;
-  min-height: 1rem;
-  opacity: 0;
-  transition: opacity 0.2s;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.error.visible {
-  opacity: 1;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.success-msg {
-  text-align: center;
-  color: rgba(100, 220, 160, 0.9);
-  font-size: 0.83rem;
-  margin-top: 1rem;
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
 }
 
 @media (max-width: 768px) {
@@ -255,7 +321,6 @@
   .author {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    display: flex;
     justify-content: center;
   }
 
@@ -266,6 +331,12 @@
   .bottom-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .submit-area {
+    width: 100%;
+    justify-content: center;
   }
 
   .submit-btn {
