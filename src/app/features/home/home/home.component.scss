@@ -1,42 +1,103 @@
-.title {
-  font-size: 8rem;
-  text-align: center;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.text {
-  color: #FFFFFF;
-  text-align: center;
-}
-
-.home-container {
+.hero {
   display: flex;
-  flex-direction: column;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 140px);
+  padding: 0 2rem;
+  position: relative;
+  min-height: calc(100vh - 70px);
+  z-index: 1;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  gap: 1.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px #4ade80;
+  }
+}
+
+.hero-title {
+  font-size: 7rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 600px;
+}
+
+.hero-actions {
+  margin-top: 0.5rem;
+}
+
+.hero-cta {
+  background: #ffffff;
+  color: #1a1520;
+  border: none;
+  border-radius: 99px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s, opacity 0.2s;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
 }
 
 @media (max-width: 992px) {
-  .title {
-    font-size: 6rem;
+  .hero-title {
+    font-size: 5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 4rem;
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-subtitle br {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: 3rem;
+  .hero-title {
+    font-size: 2.8rem;
   }
 }

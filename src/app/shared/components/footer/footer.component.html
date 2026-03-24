@@ -1,1 +1,50 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a routerLink="/" class="footer-logo">
+          <svg width="120" height="20" viewBox="0 0 274 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.18 33L9.15 28.77L6.75 33H0.3L5.91 24.27L0.06 16.17H6.66L9.69 20.4L12.12 16.17H18.57L12.84 24.75L18.78 33H12.18ZM28.8879 11.85C31.1079 11.85 33.0479 12.3 34.7079 13.2C36.3879 14.08 37.6779 15.32 38.5779 16.92C39.4779 18.52 39.9279 20.35 39.9279 22.41C39.9279 24.45 39.4679 26.27 38.5479 27.87C37.6479 29.47 36.3579 30.73 34.6779 31.65C33.0179 32.55 31.0879 33 28.8879 33H20.5179V11.85H28.8879ZM28.4379 27.81C30.1579 27.81 31.5079 27.34 32.4879 26.4C33.4679 25.46 33.9579 24.13 33.9579 22.41C33.9579 20.67 33.4679 19.33 32.4879 18.39C31.5079 17.43 30.1579 16.95 28.4379 16.95H26.3979V27.81H28.4379ZM62.3484 34.26V39.96H42.9084V34.26H62.3484Z" fill="rgba(255,255,255,0.9)"/>
+            <path d="M126.872 28L124.584 24.56L122.568 28H119.464L123.064 22.288L119.384 16.768H122.568L124.824 20.16L126.808 16.768H129.912L126.344 22.432L130.056 28H126.872ZM144.821 26.016H140.629L139.957 28H137.093L141.157 16.768H144.326L148.39 28H145.493L144.821 26.016ZM144.117 23.904L142.726 19.792L141.349 23.904H144.117ZM166.57 16.768L162.586 28H159.162L155.178 16.768H158.09L160.874 25.248L163.674 16.768H166.57ZM176.85 16.768V28H174.114V16.768H176.85ZM187.969 18.96V21.232H191.633V23.344H187.969V25.808H192.113V28H185.233V16.768H192.113V18.96H187.969ZM206.017 28L203.681 23.76H203.025V28H200.289V16.768H204.881C205.766 16.768 206.518 16.9227 207.137 17.232C207.766 17.5413 208.236 17.968 208.545 18.512C208.854 19.0453 209.009 19.6427 209.009 20.304C209.009 21.0507 208.796 21.7173 208.369 22.304C207.953 22.8907 207.334 23.3067 206.513 23.552L209.105 28H206.017ZM203.025 21.824H204.721C205.222 21.824 205.596 21.7013 205.841 21.456C206.097 21.2107 206.225 20.864 206.225 20.416C206.225 19.9893 206.097 19.6533 205.841 19.408C205.596 19.1627 205.222 19.04 204.721 19.04H203.025V21.824ZM231.125 16.768C232.309 16.768 233.344 17.0027 234.229 17.472C235.114 17.9413 235.797 18.6027 236.277 19.456C236.768 20.2987 237.013 21.2747 237.013 22.384C237.013 23.4827 236.768 24.4587 236.277 25.312C235.797 26.1653 235.109 26.8267 234.213 27.296C233.328 27.7653 232.298 28 231.125 28H226.917V16.768H231.125ZM230.949 25.632C231.984 25.632 232.789 25.3493 233.365 24.784C233.941 24.2187 234.229 23.4187 234.229 22.384C234.229 21.3493 233.941 20.544 233.365 19.968C232.789 19.392 231.984 19.104 230.949 19.104H229.653V25.632H230.949ZM251.934 26.016H247.742L247.07 28H244.206L248.27 16.768H251.438L255.502 28H252.606L251.934 26.016ZM251.23 23.904L249.838 19.792L248.462 23.904H251.23ZM273.187 28H270.451L265.875 21.072V28H263.139V16.768H265.875L270.451 23.728V16.768H273.187V28Z" fill="rgba(255,255,255,0.9)"/>
+            <path d="M92 11V33.5" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+          </svg>
+        </a>
+        <p class="footer-desc">
+          Je vous accompagne dans la réalisation <br/>
+          de votre boutique Shopify, sur mesure et optimisée, <br/>
+          dans le but de convertir vos visiteurs en clients.
+        </p>
+      </div>
+
+      <nav class="footer-nav">
+        <a routerLink="/">Accueil</a>
+        <a href="#projects">Projets</a>
+        <a href="#pricing">Tarifs</a>
+        <a routerLink="/client">Espace client</a>
+        <a routerLink="/contact">
+          <button class="contact-button" routerLink="/contact">Contactez-moi !</button>
+        </a>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© {{ currentYear }} Xavier Dan. Tous droits réservés.</p>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/TON_PROFIL" target="_blank" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="https://github.com/XDan94" target="_blank" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>

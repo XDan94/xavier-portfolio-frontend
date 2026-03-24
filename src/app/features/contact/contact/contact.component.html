@@ -1,1 +1,70 @@
-<p>contact works!</p>
+<div class="contact-page">
+  <div class="contact-card">
+
+    <div class="left-panel">
+      <div>
+        <h1 class="left-title">Contactez moi !</h1>
+        <p class="left-subtitle">Je suis disponible pour tout projet, collaboration ou simple question. Réponse garantie sous 24h.</p>
+      </div>
+      <div class="author">
+        <div class="avatar">👨‍💻</div>
+        <div>
+          <div class="author-name">Xavier</div>
+          <div class="author-role">Ingénieur logiciel</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="field">
+          <label>Nom <span>*</span></label>
+          <input type="text" formControlName="name" placeholder="Votre nom complet" />
+          <span class="error" [class.visible]="submitted && f['name'].errors?.['required']">Le nom est requis.</span>
+        </div>
+
+        <div class="field">
+          <label>Email <span>*</span></label>
+          <input type="email" formControlName="email" placeholder="votre@email.com" />
+          <span class="error" [class.visible]="submitted && f['email'].errors?.['email']">Format invalide.</span>
+        </div>
+
+        <div class="field">
+          <label>Sujet <span>*</span></label>
+          <input type="text" formControlName="subject" placeholder="Objet de votre message" />
+          <span class="error" [class.visible]="submitted && f['subject'].errors?.['required']">Le sujet est requis.</span>
+        </div>
+
+        <div class="field">
+          <label>Message <span>*</span></label>
+          <textarea rows="4" formControlName="message" placeholder="Décrivez votre projet..."></textarea>
+          <span class="error" [class.visible]="submitted && f['message'].errors?.['minlength']">Minimum 10 caractères.</span>
+        </div>
+
+        <div class="bottom-row">
+          <label class="checkbox-label">
+            <span class="custom-check"></span>
+            J'accepte que mes données soient utilisées pour traiter ma demande.
+          </label>
+
+          <div class="submit-area">
+            @if (!success && !error) {
+              <button type="submit" class="submit-btn" [disabled]="loading">
+                {{ loading ? 'Envoi en cours ...' : 'Envoyer' }}
+              </button>
+            }
+            @if (success) {
+              <p class="success-msg">✓ Message envoyé avec succès !</p>
+            }
+            @if (error) {
+              <p class="error-msg">✗ Une erreur est survenue, réessayez.</p>
+            }
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>

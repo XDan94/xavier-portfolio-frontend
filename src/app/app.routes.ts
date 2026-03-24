@@ -6,12 +6,12 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./features/home/home/home.component').then(m => m.HomeComponent),
-  },/*
+  },
   {
     path: 'contact',
     loadComponent: () =>
-      import('./features/contact/contact/contact').then(m => m.ContactComponent),
-  },
+      import('./features/contact/contact/contact.component').then(m => m.ContactComponent),
+  },/*
   {
     path: 'client/login',
     loadComponent: () =>
